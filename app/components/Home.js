@@ -10,10 +10,11 @@ export default function Home() {
     >
       <div className='flex flex-col md:flex-row items-center justify-between w-full'>
         <div className='md:w-1/2'>
-          <h3 className='text-3xl font-bold'>Hello! It's me</h3>
+          <h3 className='text-3xl font-bold'>Hello! It&apos;s me</h3>
           <h1 className='text-5xl font-bold my-4'>Noel Paing Oak Soe</h1>
           <h3 className='text-3xl font-bold mb-4'>
-            I'm a <span className='text-[#b9e164]'>Motivated CS Student</span>
+            I&apos;m a{' '}
+            <span className='text-[#b9e164]'>Motivated CS Student</span>
           </h3>
           <p className='text-lg mb-8'>
             I like to think of the world as a combination of complex problems to

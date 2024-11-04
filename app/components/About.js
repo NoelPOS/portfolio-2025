@@ -18,8 +18,8 @@ export default function About() {
           <p className='text-lg mb-8'>
             I use my knowledge to create responsive websites that are useful for
             individuals and organizations. Eager to try out new things whenever
-            I get the chance, I'd like to blaze my path of long-lasting coding
-            journey with dedication and determination...
+            I get the chance, I&apos;d like to blaze my path of long-lasting
+            coding journey with dedication and determination...
           </p>
           <Link
             href='#contact'
