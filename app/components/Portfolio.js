@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import conserveLogo from '../public/assets/conserve-logo.png'
-import weatherApp from '../public/assets/weatherapp.png'
-import newsApp from '../public/assets/newsapp.png'
-import comingSoon from '../public/assets/newsapp.png'
+import conserveLogo from '@/public/assets/conserve-logo.png'
+import weatherApp from '@/public/assets/weatherapp.png'
+import newsApp from '@/public/assets/newsapp.png'
+import comingSoon from '@/public/assets/newsapp.png'
 
 const projects = [
   {
+    id: 'conserveapp',
     title: 'Conserve App',
     description:
       'My first hackathon team project where we built a complete app from scratch.',
@@ -14,6 +15,7 @@ const projects = [
     link: 'https://conserve-landing-page.vercel.app/',
   },
   {
+    id: 'weatherapp',
     title: 'Weathering App',
     description:
       'Using Open Weather Map Api, I created the weather app including the forecast for five days ahead using html, css and javascript...',
@@ -21,6 +23,7 @@ const projects = [
     link: 'https://weather-app-eta-nine-25.vercel.app/',
   },
   {
+    id: 'newsapp',
     title: 'Newsify App',
     description:
       "Using NewsApi, I created news watching app that allows users to search for any latest news. Unfortunately, it comes with pricing so I couldn't host it online",
@@ -28,18 +31,21 @@ const projects = [
     link: 'https://github.com/NoelPOS/Newsify-App',
   },
   {
+    id: 'comingsoon',
     title: 'Coming Soon...',
     description: '',
     image: comingSoon,
     link: '#',
   },
   {
+    id: 'comingsoon',
     title: 'Coming Soon...',
     description: '',
     image: comingSoon,
     link: '#',
   },
   {
+    id: 'comingsoon',
     title: 'Coming Soon...',
     description: '',
     image: comingSoon,
@@ -49,14 +55,17 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <section id='portfolio' className='py-32 px-[9%] bg-[#1f242d]'>
+    <section
+      id='portfolio'
+      className='py-32 px-[9%]  dark:bg-[#1f242d] transition-colors duration-300'
+    >
       <h2 className='text-4xl font-bold text-center mb-16'>
         My Latest <span className='text-[#b9e164]'>Projects</span>
       </h2>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <div
-            key={index}
+            key={project.id}
             className='relative overflow-hidden rounded-2xl shadow-lg group'
           >
             <Image
@@ -71,13 +80,21 @@ export default function Portfolio() {
               <p className='text-lg font-semibold mb-4 px-4 text-center'>
                 {project.description}
               </p>
-              <Link
-                href={project.link}
-                target='_blank'
-                className='w-12 h-12 flex items-center justify-center bg-white rounded-full'
-              >
-                <i className='bx bx-link-external text-2xl text-[#323946]'></i>
-              </Link>
+              <div className='flex space-x-4'>
+                <Link
+                  href={`/projects/${project.id}`}
+                  className='w-12 h-12 flex items-center justify-center bg-white rounded-full'
+                >
+                  <i className='bx bx-info-circle text-2xl text-[#323946]'></i>
+                </Link>
+                <Link
+                  href={project.link}
+                  target='_blank'
+                  className='w-12 h-12 flex items-center justify-center bg-white rounded-full'
+                >
+                  <i className='bx bx-link-external text-2xl text-[#323946]'></i>
+                </Link>
+              </div>
             </div>
           </div>
         ))}

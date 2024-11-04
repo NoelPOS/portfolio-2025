@@ -1,8 +1,17 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import Profile from '../public/assets/profile-pic.png'
+import Profile from '@/public/assets/profile-pic.png'
 
 export default function Home() {
+  const handleDownload = () => {
+    const link = document.createElement('a')
+    link.href = '/assets/resume.pdf'
+    link.download = 'resume.pdf'
+    link.click()
+  }
+
   return (
     <section
       id='home'
@@ -52,8 +61,8 @@ export default function Home() {
             </Link>
           </div>
           <Link
-            href='/../public/assets/resume.pdf'
-            download
+            href='#'
+            onClick={handleDownload}
             className='inline-block px-8 py-3 bg-[#b9e164] text-[#323946] font-semibold rounded-full shadow-lg hover:shadow-none transition duration-300'
           >
             Download Resume
