@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -16,9 +17,7 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // Here you would typically send the form data to your backend
     console.log(formData)
-    // Reset form after submission
     setFormData({
       fullname: '',
       email: '',
@@ -29,14 +28,40 @@ export default function Contact() {
     alert('Message sent successfully!')
   }
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  }
+
   return (
-    <section id='contact' className='py-32 px-[9%] bg-[#323946]'>
-      <h2 className='text-4xl font-bold text-center mb-12'>
+    <motion.section
+      id='contact'
+      className='py-32  px-[9%] bg-[#323946]'
+      initial='hidden'
+      animate='visible'
+      variants={containerVariants}
+    >
+      <motion.h2
+        className='text-4xl font-bold text-center mb-12'
+        variants={itemVariants}
+      >
         Contact <span className='text-[#b9e164]'>Me!</span>
-      </h2>
-      <form onSubmit={handleSubmit} className='max-w-3xl mx-auto'>
+      </motion.h2>
+      <motion.form
+        onSubmit={handleSubmit}
+        className='max-w-3xl mx-auto'
+        variants={containerVariants}
+      >
         <div className='flex flex-wrap -mx-2 mb-4'>
-          <div className='w-full md:w-1/2 px-2 mb-4'>
+          <motion.div
+            className='w-full md:w-1/2 px-2 mb-4'
+            variants={itemVariants}
+          >
             <input
               type='text'
               name='fullname'
@@ -46,8 +71,11 @@ export default function Contact() {
               className='w-full p-4 bg-[#1f242d] rounded-lg text-white'
               required
             />
-          </div>
-          <div className='w-full md:w-1/2 px-2 mb-4'>
+          </motion.div>
+          <motion.div
+            className='w-full md:w-1/2 px-2 mb-4'
+            variants={itemVariants}
+          >
             <input
               type='email'
               name='email'
@@ -57,10 +85,13 @@ export default function Contact() {
               className='w-full p-4 bg-[#1f242d] rounded-lg text-white'
               required
             />
-          </div>
+          </motion.div>
         </div>
         <div className='flex flex-wrap -mx-2 mb-4'>
-          <div className='w-full md:w-1/2 px-2 mb-4'>
+          <motion.div
+            className='w-full md:w-1/2 px-2 mb-4'
+            variants={itemVariants}
+          >
             <input
               type='tel'
               name='phonenumber'
@@ -69,8 +100,11 @@ export default function Contact() {
               placeholder='Phone Number'
               className='w-full p-4 bg-[#1f242d] rounded-lg text-white'
             />
-          </div>
-          <div className='w-full md:w-1/2 px-2 mb-4'>
+          </motion.div>
+          <motion.div
+            className='w-full md:w-1/2 px-2 mb-4'
+            variants={itemVariants}
+          >
             <input
               type='text'
               name='subject'
@@ -80,9 +114,9 @@ export default function Contact() {
               className='w-full p-4 bg-[#1f242d] rounded-lg text-white'
               required
             />
-          </div>
+          </motion.div>
         </div>
-        <textarea
+        <motion.textarea
           name='message'
           value={formData.message}
           onChange={handleChange}
@@ -90,14 +124,18 @@ export default function Contact() {
           className='w-full p-4 bg-[#1f242d] rounded-lg text-white mb-4'
           rows='10'
           required
-        ></textarea>
-        <button
+          variants={itemVariants}
+        ></motion.textarea>
+        <motion.button
           type='submit'
           className='w-full py-3 bg-[#b9e164] text-[#323946] font-semibold rounded-lg shadow-lg hover:shadow-none transition duration-300'
+          variants={itemVariants}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           Send Message
-        </button>
-      </form>
-    </section>
+        </motion.button>
+      </motion.form>
+    </motion.section>
   )
 }
