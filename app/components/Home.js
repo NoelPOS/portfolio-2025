@@ -12,7 +12,7 @@ export default function Home() {
 
   const handleDownload = () => {
     const link = document.createElement('a')
-    link.href = '/assets/resume.pdf'
+    link.href = '/assets/resume2025.pdf'
     link.download = 'resume.pdf'
     link.click()
   }
