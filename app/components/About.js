@@ -1,9 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 export default function About() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.5 })
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -16,10 +20,11 @@ export default function About() {
 
   return (
     <motion.section
+      ref={ref}
       id='about'
       className='min-h-screen flex items-center justify-center py-32 px-[9%] bg-[#323946]'
       initial='hidden'
-      animate='visible'
+      animate={isInView ? 'visible' : 'hidden'}
       variants={containerVariants}
     >
       <div className='flex flex-col md:flex-row items-center justify-between gap-16'>
@@ -54,7 +59,7 @@ export default function About() {
               href='#contact'
               className='inline-block px-8 py-3 bg-[#b9e164] text-[#323946] font-semibold rounded-full shadow-lg hover:shadow-none transition duration-300'
             >
-              My Coding Journey
+              My Coding Journey!
             </Link>
           </motion.div>
         </motion.div>

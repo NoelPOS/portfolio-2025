@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import conserveLogo from '@/public/assets/conserve-logo.png'
 import weatherApp from '@/public/assets/weatherapp.png'
 import auvanLogo from '@/public/assets/auVanLogo.png'
@@ -62,18 +63,22 @@ const projects = [
 ]
 
 export default function Portfolio() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
+
   return (
     <motion.section
+      ref={ref}
       id='portfolio'
       className='py-32 px-[9%] dark:bg-[#1f242d] transition-colors duration-300'
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
       <motion.h2
         className='text-4xl font-bold text-center mb-16'
         initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        animate={isInView ? { y: 0, opacity: 1 } : { y: -50, opacity: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
         My Latest <span className='text-[#b9e164]'>Projects</span>
@@ -81,7 +86,7 @@ export default function Portfolio() {
       <motion.div
         className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center'
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: 0.4, duration: 0.5 }}
       >
         {projects.map((project, index) => (
@@ -89,7 +94,7 @@ export default function Portfolio() {
             key={project.id}
             className='relative overflow-hidden rounded-2xl shadow-lg group'
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ delay: 0.1 * index, duration: 0.5 }}
             whileHover={{ scale: 1.05 }}
           >

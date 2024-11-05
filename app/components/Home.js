@@ -2,13 +2,17 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import Profile from '@/public/assets/profile-pic.png'
 
 export default function Home() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.5 })
+
   const handleDownload = () => {
     const link = document.createElement('a')
-    link.href = '/assets/resume2025.pdf'
+    link.href = '/assets/resume.pdf'
     link.download = 'resume.pdf'
     link.click()
   }
@@ -25,10 +29,11 @@ export default function Home() {
 
   return (
     <motion.section
+      ref={ref}
       id='home'
       className='min-h-screen flex items-center justify-center py-32 px-[9%]'
       initial='hidden'
-      animate='visible'
+      animate={isInView ? 'visible' : 'hidden'}
       variants={containerVariants}
     >
       <div className='flex flex-col md:flex-row items-center justify-between w-full'>

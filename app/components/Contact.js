@@ -1,6 +1,6 @@
 'use client'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,6 +10,9 @@ export default function Contact() {
     subject: '',
     message: '',
   })
+
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.5 })
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -40,10 +43,11 @@ export default function Contact() {
 
   return (
     <motion.section
+      ref={ref}
       id='contact'
-      className='py-32  px-[9%] bg-[#323946]'
+      className='py-32 px-[9%] bg-[#323946]'
       initial='hidden'
-      animate='visible'
+      animate={isInView ? 'visible' : 'hidden'}
       variants={containerVariants}
     >
       <motion.h2
