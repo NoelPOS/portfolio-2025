@@ -147,8 +147,8 @@ export default function AboutPage() {
           <ul className='space-y-2 text-sm'>
             <li className='flex items-center'>
               <span className='w-2 h-2 bg-[#b9e164] rounded-full mr-2'></span>
-              Pracitce regularly what I've learned so far to keep them fresh in
-              my mind and improve my coding skills further.
+              Pracitce regularly what I have learned so far to keep them fresh
+              in my mind and improve my coding skills further.
             </li>
             <li className='flex items-center'>
               <span className='w-2 h-2 bg-[#b9e164] rounded-full mr-2'></span>
