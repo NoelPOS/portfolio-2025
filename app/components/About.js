@@ -56,7 +56,7 @@ export default function About() {
           </motion.p>
           <motion.div variants={itemVariants}>
             <Link
-              href='#contact'
+              href='/about'
               className='inline-block px-8 py-3 bg-[#b9e164] text-[#323946] font-semibold rounded-full shadow-lg hover:shadow-none transition duration-300'
             >
               My Coding Journey!
