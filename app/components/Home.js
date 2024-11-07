@@ -60,19 +60,42 @@ export default function Home() {
             key to achieve the answer!
           </motion.p>
           <motion.div className='flex mb-8' variants={containerVariants}>
-            {['facebook', 'github', 'instagram', 'linkedin'].map(
-              (social, index) => (
-                <motion.div key={social} variants={itemVariants}>
-                  <Link
-                    href={`https://www.${social}.com/noel.p.soe.1`}
-                    target='_blank'
-                    className='w-12 h-12 flex items-center justify-center border-2 border-[#b9e164] rounded-full text-2xl text-[#b9e164] mr-6 hover:bg-[#b9e164] hover:text-[#323946] transition duration-300'
-                  >
-                    <i className={`bx bxl-${social}`}></i>
-                  </Link>
-                </motion.div>
-              )
-            )}
+            <motion.div variants={itemVariants}>
+              <Link
+                href={`https://www.facebook.com/noel.p.soe.1`}
+                target='_blank'
+                className='w-12 h-12 flex items-center justify-center border-2 border-[#b9e164] rounded-full text-2xl text-[#b9e164] mr-6 hover:bg-[#b9e164] hover:text-[#323946] transition duration-300'
+              >
+                <i className={`bx bxl-facebook`}></i>
+              </Link>
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <Link
+                href={`https://www.github.com/NoelPOS`}
+                target='_blank'
+                className='w-12 h-12 flex items-center justify-center border-2 border-[#b9e164] rounded-full text-2xl text-[#b9e164] mr-6 hover:bg-[#b9e164] hover:text-[#323946] transition duration-300'
+              >
+                <i className={`bx bxl-github`}></i>
+              </Link>
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <Link
+                href={`https://www.instagram.com/noel_pos/`}
+                target='_blank'
+                className='w-12 h-12 flex items-center justify-center border-2 border-[#b9e164] rounded-full text-2xl text-[#b9e164] mr-6 hover:bg-[#b9e164] hover:text-[#323946] transition duration-300'
+              >
+                <i className={`bx bxl-instagram`}></i>
+              </Link>
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <Link
+                href={`https://www.linkedin.com/in/noelpos`}
+                target='_blank'
+                className='w-12 h-12 flex items-center justify-center border-2 border-[#b9e164] rounded-full text-2xl text-[#b9e164] mr-6 hover:bg-[#b9e164] hover:text-[#323946] transition duration-300'
+              >
+                <i className={`bx bxl-linkedin`}></i>
+              </Link>
+            </motion.div>
           </motion.div>
           <motion.div variants={itemVariants}>
             <Link
