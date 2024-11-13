@@ -7,9 +7,9 @@ export const metadata = {
   title: "Noel's Portfolio",
   description: 'Portfolio website of Noel Paing Oak Soe',
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-    shortcut: '/favicon-16x16.png',
+    icon: '../public/assets/favicon.ico',
+    apple: '../public/assets/apple-touch-icon.png',
+    shortcut: '../public/assets/favicon-16x16.png',
   },
 }
 
